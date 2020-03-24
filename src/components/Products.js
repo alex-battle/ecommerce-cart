@@ -5,7 +5,7 @@ class Products extends React.Component {
     
     render() {
         const productItems = this.props.products.map( product => (
-            <div className="col-md-4">
+            <div className="col-md-4" key={product.id}>
                 <div className="thumbnail-text-center">
                     <a href={`#${product.id}`} onClick={this.props.handleAddToCart}>
                         <img src={`/products/${product.sku}.jpg`} alt={product.title} />
