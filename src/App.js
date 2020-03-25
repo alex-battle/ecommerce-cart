@@ -15,6 +15,7 @@ class App extends React.Component {
     this.handleChangeSort = this.handleChangeSort.bind(this)
     this.handleChangeSort = this.handleChangeSize.bind(this)
     this.handleAddToCart = this.handleAddToCart.bind(this)
+    this.handleRemoveFromCart = this.handleRemoveFromCart.bind(this)
   }
 componentWillMount() {
       fetch("http://localhost:8000/products").then(res => res.json())
@@ -22,6 +23,10 @@ componentWillMount() {
         products: data,
         filteredProducts: data
       }));
+
+      if(localStorage.getItem('cartItems')){
+        this.setState({cartItems: JSON.parse(localStorage.getItem('cartItems'))})
+      }
   }
 handleAddToCart(e, product){
   this.setState(state=>{
@@ -34,7 +39,7 @@ handleAddToCart(e, product){
         item.count++
       }
     })
-    
+
     if(!productAlreadyInCart){
       cartItems.push({...product, count:1})
     }
@@ -42,6 +47,13 @@ handleAddToCart(e, product){
     return cartItems
   }
     )
+}
+handleRemoveFromCart(e, item){
+  this.setState(state=>{
+    const cartItems = state.cartItems.filter(elm => elm.id != item.id)
+    localStorage.setItem('cartItem', cartItems)
+    return {cartItems}
+  })
 }
 handleChangeSort(e){
   this.setState({
@@ -93,7 +105,7 @@ listProducts(){
         <Products products={this.state.filteredProducts} handleAddToCart={this.handleAddToCart} />
       </div>
       <div className="col-md-4">
-        <Basket cartItems={this.state.cartItems} handleRemoveFromCart={this.handleRemoveCart}/>
+        <Basket cartItems={this.state.cartItems} handleRemoveFromCart={this.handleRemoveFromCart}/>
       </div>
       <div className="basket"></div>
     </div>
