@@ -11,7 +11,7 @@ class Basket extends React.Component {
                 {cartItems.length > 0 &&
                     <div>
                         <ul>
-                            {cartItems.map(item=>
+                            {cartItems.map(item =>
                                 <li>
                                     <b>{item.title}</b>
                                     X {item.count} = {item.price * item.count}
@@ -21,11 +21,11 @@ class Basket extends React.Component {
                                 </li>
                             )}
                         </ul>
-                        Total: {util.formatCurrency (cartItems.reduce((a, c) => a + c.price + c.count, 0))}
+                        Total: {util.formatCurrency(cartItems.reduce((a, c) => a + c.price + c.count, 0))}
                     </div>
                 }
-                <button className="btn btn-primary" 
-                onClick= {()=>(alert("Checkout needs to implement...."))}>Checkout</button>
+                <button className="btn btn-primary"
+                    onClick={() => (alert("Checkout needs to implement...."))}>Checkout</button>
             </div>
         );
     }

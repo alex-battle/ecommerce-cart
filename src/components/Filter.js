@@ -1,7 +1,7 @@
 import React from 'react';
 
 class Filter extends React.Component {
-    state = {  }
+    state = {}
     render() {
         return (
             <div className="row">
@@ -12,7 +12,7 @@ class Filter extends React.Component {
                     <label>
                         Order by
                         <select className="form-control" value={this.props.sort}
-                        onChange={this.props.handleChangeSort}>
+                            onChange={this.props.handleChangeSort}>
                             <option value="">Select</option>
                             <option value="lowest">Lowest to Highest</option>
                             <option value="highest">Highest to Lowest</option>
@@ -21,11 +21,11 @@ class Filter extends React.Component {
                     </label>
                 </div>
                 <div className="col-md-4">
-                <label>
-                    Filter Size
+                    <label>
+                        Filter Size
 
                         <select className="form-control" value={this.props.size}
-                        onChange={this.props.handleChangeSize}>
+                            onChange={this.props.handleChangeSize}>
                             <option value="">All</option>
                             <option value="xs">Extra Small</option>
                             <option value="s">Small</option>
