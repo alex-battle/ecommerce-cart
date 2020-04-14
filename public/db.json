@@ -89,33 +89,6 @@
         "availableSizes": ["L", "XL"],
         "price": 134.9,
         "isFreeShipping": true
-      },
-      {
-        "id": 10,
-        "sku": 116009832768986165,
-        "title": "Gucci Tee",
-        "description": "",
-        "availableSizes": ["S", "M", "L", "XL"],
-        "price": 344.9,
-        "isFreeShipping": true
-      },
-      {
-        "id": 11,
-        "sku": 45600983276356165,
-        "title": "Balenciaga Headband",
-        "description": "",
-        "availableSizes": ["M", "XXL"],
-        "price": 240,
-        "isFreeShipping": true
-      },
-      {
-        "id": 12,
-        "sku": 119580983276356165,
-        "title": "Louis Vuitton Belt",
-        "description": "",
-        "availableSizes": ["S"],
-        "price": 500,
-        "isFreeShipping": true
       }
     ]
   }

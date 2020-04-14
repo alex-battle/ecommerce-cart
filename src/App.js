@@ -13,7 +13,7 @@ class App extends React.Component {
       cartItems:[]
     }
     this.handleChangeSort = this.handleChangeSort.bind(this)
-    this.handleChangeSort = this.handleChangeSize.bind(this)
+    this.handleChangeSize = this.handleChangeSize.bind(this)
     this.handleAddToCart = this.handleAddToCart.bind(this)
     this.handleRemoveFromCart = this.handleRemoveFromCart.bind(this)
   }
@@ -51,52 +51,53 @@ handleAddToCart(e, product){
 handleRemoveFromCart(e, item){
   this.setState(state=>{
     const cartItems = state.cartItems.filter(elm => elm.id != item.id)
-    localStorage.setItem('cartItem', cartItems)
+    localStorage.setItem('cartItems', cartItems)
     return {cartItems}
   })
 }
-handleChangeSort(e){
+handleChangeSort = (e)=>{
   this.setState({
     sort: e.target.value
   });
   this.listProducts();
 }
-handleChangeSize(e){
+handleChangeSize=(e)=>{
   this.setState({
     size: e.target.value
   });
   this.listProducts();
 }
-listProducts(){
+listProducts=()=>{
   this.setState(state => {
     // filter by price
     if(state.sort !== ''){
-      state.products.sort((a,b)=>(state.sort==='lowest')? 
-      (a.price > b.price?1: -1)
-      : (a.price < b.price?1:-1))
+      state.products.sort((a,b)=>
+      (state.sort === 'lowest'
+      ? ((a.price > b.price) ? 1 : -1)
+      : ((a.price < b.price) ? 1 : -1)))
     } else{
-      state.products.sort((a,b)=>(a.id < b.id?1:-1));
+      state.products.sort((a, b)=> (a.id > b.id) ? 1 : -1);
     }
-    if(state.size !== ''){
-      return {filteredProducts: this.state.products.filter(a=> a.availableSizes.indexOf(state.size.toUppercase())
-      )}
-    }
-    // filter by size
-    if (state.size !== '') {
-      return {filteredProducts: state.products.filter(a =>
-          a.availableSizes.indexOf(state.size.toUppercase) >= 0
+  
+  // filter by size
+  if (state.size !== '') {
+    return {filteredProducts:state.products.filter(a =>
+      a.availableSizes.indexOf(state.size.toUpperCase()) >= 0
       )
     }
   }
-    return {filteredProducts: state.products}
+  return {filteredProducts: state.products}
+  // return {filteredProducts: this.state.products.filter(a=> a.availableSizes.indexOf(state.size.toUppercase())
   })
 }
+  
+
 
   render() {
     
     return(
       <div className="container">
-      <h1>E-commerce shopping cart</h1>
+      <h1>Alexzon shopping cart</h1>
       <div className="rows"></div>
       <div className="col-md-8">
         {/* pass state and handleclick events to each component */}

@@ -37,3 +37,4 @@ when you click a product it will add the quantity in the cart
 
 ## Moving Forward 
 Test out Redux
+Add pictures of items
